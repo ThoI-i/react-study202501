@@ -1,5 +1,7 @@
+// rafce
 import React from 'react'
 import './ExpenseItem.css'
+import ExpenseDate from './ExpenseDate';
 
 // const ExpenseItem = (props) => {
 //   // console.log('props: ', props);
@@ -21,17 +23,30 @@ import './ExpenseItem.css'
 // }
 
 // 2단계: 디스턱처링
+// const ExpenseItem = ({date, title, price}) => {
+
+//   return (
+//     <div className='expense-item'>
+//       <div>{ date.toLocaleString() } </div>s
+//       <div className='expense-item__description'>
+//         <h2>{title}</h2>
+//         <div className='expense-item__price'>{price}원</div>
+//       </div>
+//     </div>
+//   );
+// }
+
 const ExpenseItem = ({date, title, price}) => {
 
   return (
     <div className='expense-item'>
-      <div>{ date.toLocaleString() } </div>
+      <ExpenseDate expenseDate={date} />
       <div className='expense-item__description'>
         <h2>{title}</h2>
         <div className='expense-item__price'>{price}원</div>
       </div>
     </div>
   );
-}
+};
 
-export default ExpenseItem
+export default ExpenseItem;
