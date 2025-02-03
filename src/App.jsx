@@ -1,5 +1,7 @@
 
 import React from 'react';
+import Hello from './components/Hello';
+import Bye from './components/Bye';
 
 // 컴포넌트
 function App() {
@@ -24,16 +26,9 @@ function App() {
   // return $h1;
   return (
     <>
-      <header>
-        <h1 className='title'>안뇽 {subject}</h1>
-        <h2>리액트 학습 시작!</h2>
-        <label htmlFor='username'>이름</label>
-        <input
-          type='text'
-          id='username'
-        />
-      </header>
-      <main>메인 컨텐츠~~</main>
+      <Bye />
+      <Hello />
+      <Bye />
     </>
   );
 }
