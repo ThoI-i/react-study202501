@@ -2,6 +2,7 @@
 import React from 'react';
 import Hello from './components/Hello';
 import Bye from './components/Bye';
+import ExpenseItem from './components/expenses/ExpenseItem';
 
 // 컴포넌트
 function App() {
@@ -26,9 +27,13 @@ function App() {
   // return $h1;
   return (
     <>
-      <Bye />
-      <Hello />
-      <Bye />
+      <ExpenseItem title={'닭강정'} 
+                   price={8000} 
+                    date={new Date(2025,1,3)} />
+      <ExpenseItem title={'아이스크림'} 
+                  price={5000} 
+                    date={new Date(2025,2,1)} />
+      
     </>
   );
 }
