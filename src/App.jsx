@@ -1,10 +1,8 @@
-import Counter from "./components/Counter";
 import ExpenseList from "./components/expenses/ExpenseList";
 import NewExpense from "./components/new-expense/NewExpense";
 
 // 컴포넌트
 const App = () => {
-
   // 서버에서 지출항목 JSON이 응답됨
   const expenses = [
     {
@@ -24,10 +22,17 @@ const App = () => {
     },
   ];
 
+  // 상향식 데이터 전달을 위해 하위컴포넌트에게 함수 하나를 내려줘야 함.
+  const onAddExpense = (newUserData) => {
+    console.log('상향식데이터 전달용 함수 호출!');
+    // console.log(newUserData);
+    expenses.push(newUserData);
+    console.log(expenses);
+    
+  };
   return (
     <>
-      <Counter />
-      <NewExpense />
+      <NewExpense onSave={onAddExpense} />
       <ExpenseList expenses={expenses} />
     </>
   );
