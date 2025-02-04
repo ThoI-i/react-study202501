@@ -1,3 +1,4 @@
+import Counter from "./components/Counter";
 import ExpenseList from "./components/expenses/ExpenseList";
 
 // 컴포넌트
@@ -24,6 +25,9 @@ const App = () => {
 
   return (
     <>
+    <Counter /> 
+    {/* 카운터 따로따로 작동됨 */}
+    <Counter />
       <ExpenseList expenses={expenses} />
     </>
   );
