@@ -44,17 +44,19 @@ const ExpenseForm = () => {
     // input태그에 입력하면 상태값 userInput만 변경됨 - 단방향
     // userInput을 변경하면 input태그도 변경됨 - 양방향
     setUserInput(initialUserInput);
-    
+
   };
 
   const handleTitleInput = e => { 
 
     // 리액트는 상태값변경은 반드시 setter를 통해서 수행
     // 상태값이 객체나 배열일 경우에는 항상 새로운 객체, 배열을 세팅하라
-    setUserInput({
-      ...userInput,
-      title: e.target.value,
-    });
+    setUserInput((prevState) =>  
+       ({
+        ...prevState,
+        title: e.target.value,
+        })
+    );
   };
   const handlePriceInput = (e) => { 
     setUserInput({
