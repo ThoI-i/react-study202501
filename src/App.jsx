@@ -1,5 +1,5 @@
-import Counter from "./components/Counter";
 import ExpenseList from "./components/expenses/ExpenseList";
+import NewExpense from "./components/new-expense/NewExpense";
 
 // 컴포넌트
 const App = () => {
@@ -25,9 +25,7 @@ const App = () => {
 
   return (
     <>
-    <Counter /> 
-    {/* 카운터 따로따로 작동됨 */}
-    <Counter />
+      <NewExpense />
       <ExpenseList expenses={expenses} />
     </>
   );
