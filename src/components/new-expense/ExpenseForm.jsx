@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ExpenseForm.css';
+
 const ExpenseForm = () => {
+  // 상태값 관리
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState(0);
+  const [date, setDate] = useState(null);
   // 오늘 날짜를 YYYY-MM-DD 형식으로 가져오는 함수
   const getTodayDate = () => {
     const today = new Date();
@@ -9,12 +14,28 @@ const ExpenseForm = () => {
     const day = String(today.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
   };
+
+  // form submit 이벤트
+  const handleSubmit = e => { 
+    e.preventDefault();
+    // console.log('submit!!');
+    const payload = {
+      title,
+      price,
+      date
+    };
+    console.log('payload: ', payload);
+    
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className='new-expense__controls'>
         <div className='new-expense__control'>
           <label>Title</label>
-          <input type='text' />
+          <input
+            type='text'
+            onInput={(e) => setTitle(e.target.value)}
+          />
         </div>
         <div className='new-expense__control'>
           <label>Price</label>
@@ -22,6 +43,7 @@ const ExpenseForm = () => {
             type='number'
             min='100'
             step='100'
+            onInput={(e) => setPrice(+e.target.value)}
           />
         </div>
         <div className='new-expense__control'>
@@ -30,6 +52,7 @@ const ExpenseForm = () => {
             type='date'
             min='2019-01-01'
             max={getTodayDate()}
+            onInput={(e) => setDate(e.target.value)}
           />
         </div>
       </div>
@@ -39,4 +62,5 @@ const ExpenseForm = () => {
     </form>
   );
 };
+
 export default ExpenseForm;
