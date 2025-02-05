@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ExpenseList from "./components/expenses/ExpenseList";
 import NewExpense from "./components/new-expense/NewExpense";
 
@@ -32,20 +33,24 @@ const App = () => {
     },
   ];
 
+  // 지출항목 배열을 상태변수로 관리
+  const [expenseList, setExpenseList] = useState(expenses);
+
   // 상향식 데이터 전달을 위해 하위컴포넌트에게 함수 하나를 내려줘야 함.
   const onAddExpense = (newUserData) => {
-    console.log('상향식데이터 전달용 함수 호출!');
+    // console.log('상향식데이터 전달용 함수 호출!');
+
+
     // console.log(newUserData);
-    expenses.push(newUserData);
-
-    console.log(expenses);
-
+    // expenseList.push(newUserData)
+    setExpenseList([ ...expenseList, newUserData ]);
+    
   };
 
   return (
     <>
       <NewExpense onSave={onAddExpense} />
-      <ExpenseList expenses={expenses} />
+      <ExpenseList expenses={expenseList} />
     </>
   );
 }
