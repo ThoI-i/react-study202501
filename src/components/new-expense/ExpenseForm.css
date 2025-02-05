@@ -24,3 +24,12 @@
 .new-expense__actions {
   text-align: right;
 }
+
+.new-expense .cancel-btn {
+  background-color: red;
+  border : none;
+}
+
+.new-expense .cancel-btn:hover {
+  background-color:orangered;
+}
