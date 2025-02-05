@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import './App.css';
 import CourseInput from './components/CourseGoals/CourseInput';
@@ -13,6 +14,9 @@ const App = () => {
   const onAddGoal = (goal) => {
     setGoals([ ...goals, goal ]);
   };
+
+  console.log(goals);
+  
   
   return (
     <div>
