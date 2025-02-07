@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MdDelete, MdDone } from 'react-icons/md';
 
@@ -10,6 +9,8 @@ const TodoItem = ({ item, onDelete }) => {
     remove,
     'todo-list-item': itemStyle,
     'check-circle': checkCircle,
+    active,
+    finish,
   } = styles;
 
   const { id, title, done } = item;
@@ -22,8 +23,10 @@ const TodoItem = ({ item, onDelete }) => {
 
   return (
     <li className={itemStyle}>
-      <div className={checkCircle}>{done && <MdDone />}</div>
-      <span className={text}>{title}</span>
+      <div className={`${checkCircle} ${done ? active : ''}`}>
+        {done && <MdDone />}
+      </div>
+      <span className={`${text} ${done ? finish : ''}`}>{title}</span>
       <div
         className={remove}
         onClick={handleDelete}>
