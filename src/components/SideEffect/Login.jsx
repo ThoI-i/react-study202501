@@ -4,7 +4,7 @@ import Card from '../ui/Card';
 import styles from './Login.module.css';
 import Button from '../ui/Button';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   // 사용자가 입력한 이메일을 상태관리
   const [enteredEmail, setEnteredEmail] = useState('');
 
@@ -48,9 +48,15 @@ const Login = () => {
     setPasswordIsValid(enteredPassword.trim().length > 6);
   };
 
+  // 로그인 수행 함수
+  const handleSubmit = e => { 
+    e.preventDefault();
+    onLogin(enteredEmail, enteredPassword);
+  };
+
   return (
     <Card className={styles.login}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div
           className={`${styles.control} ${emailIsValid === false ? styles.invalid : ''}`}>
           <label htmlFor='email'>E-Mail</label>
