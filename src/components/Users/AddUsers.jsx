@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './AddUsers.module.css';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
+import ErrorModal from '../ui/Modal/ErrorModal';
 
 const AddUsers = ({ onAddUser }) => {
   // 입력값들을 상태관리
@@ -38,25 +39,28 @@ const AddUsers = ({ onAddUser }) => {
   };
 
   return (
-    <Card className={styles.input}>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='username'>이름</label>
-        <input
-          id='username'
-          type='text'
-          value={userValue.username}
-          onInput={handleName}
-        />
-        <label htmlFor='age'>나이</label>
-        <input
-          id='age'
-          type='number'
-          value={userValue.age}
-          onInput={handleAge}
-        />
-        <Button type='submit'>가입하기</Button>
-      </form>
-    </Card>
+    <>
+      <ErrorModal title={'모달 제목'} message={'모델 내용'} />
+      <Card className={styles.input}>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='username'>이름</label>
+          <input
+            id='username'
+            type='text'
+            value={userValue.username}
+            onInput={handleName}
+          />
+          <label htmlFor='age'>나이</label>
+          <input
+            id='age'
+            type='number'
+            value={userValue.age}
+            onInput={handleAge}
+          />
+          <Button type='submit'>가입하기</Button>
+        </form>
+      </Card>
+    </>
   );
 };
 
