@@ -12,7 +12,7 @@ const TodoItem = ({item}) => {
   return (
     <li className={itemStyle}>
       <div className={checkCircle}>
-        <MdDone />
+        {done && <MdDone />}
       </div>
       <span className={text}>{ title }</span>
       <div className={remove}>
