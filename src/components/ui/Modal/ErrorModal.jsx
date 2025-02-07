@@ -2,9 +2,7 @@ import React from 'react';
 import Card from '../Card';
 import Button from '../Button';
 import styles from './ErrorModal.module.css';
-
-// portal을 사용하기 위한 
-import ReactDOM from 'react-dom';
+import Portal from '../Portal/Portal';
 
 // 백드롭 컴포넌트
 const BackDrop = ({ onClose }) => {
@@ -35,19 +33,17 @@ const ModalContent = ({ title, message, onClose }) => {
 const ErrorModal = ({ title, message, onClose }) => {
   return (
     <>
-      {ReactDOM.createPortal(
-        <BackDrop onClose={onClose} />,
-        document.getElementById('backdrop-root')
-      )}
+      <Portal destId={'backdrop-root'}>
+        <BackDrop onClose={onClose} />
+      </Portal>
 
-      {ReactDOM.createPortal(
+      <Portal destId={'overlay-root'}>
         <ModalContent
           title={title}
           message={message}
           onClose={onClose}
-        />,
-        document.getElementById('overlay-root')
-      )}
+        />
+      </Portal>
     </>
   );
 };
