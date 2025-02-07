@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import TodoHeader from './TodoHeader';
 import styles from './scss/TodoTemplate.module.scss';
@@ -33,10 +32,35 @@ const TodoTemplate = () => {
     setTodoList(todoList.filter(todo => todo.id !== id));
   };
 
+  // 할 일 체크 함수
+  const checkTodo = (id) => { 
+    // console.log('체크된 id: ', id);
+
+    // id로 할 일 객체 탐색
+    // 기존 배열을 복제
+    // const copyTodoList = [...todoList];
+    // const foundTodo = copyTodoList.find((todo) => todo.id === id);
+    
+    // foundTodo.done = !foundTodo.done;
+    // console.log(foundTodo);
+
+    // setTodoList(copyTodoList);
+
+    setTodoList(todoList.map(todo =>
+      todo.id === id 
+      ? { ...todo, done: !todo.done }
+      : todo
+    ));
+
+  };
+
+  // 남은 할 일의 개수 구하기
+  const countRestTodo = todoList.filter(todo => !todo.done).length;
+
   return (
     <div className={styles.TodoTemplate}>
-      <TodoHeader />
-      <TodoMain items={todoList} onRemove={removeTodo} />
+      <TodoHeader count={countRestTodo} />
+      <TodoMain items={todoList} onRemove={removeTodo} onCheck={checkTodo} />
       <TodoInput onAdd={addTodo} />
     </div>
   );

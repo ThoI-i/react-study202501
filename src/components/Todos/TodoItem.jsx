@@ -3,7 +3,7 @@ import { MdDelete, MdDone } from 'react-icons/md';
 
 import styles from './scss/TodoItem.module.scss';
 
-const TodoItem = ({ item, onDelete }) => {
+const TodoItem = ({ item, onDelete, onCheck }) => {
   const {
     text,
     remove,
@@ -23,7 +23,7 @@ const TodoItem = ({ item, onDelete }) => {
 
   return (
     <li className={itemStyle}>
-      <div className={`${checkCircle} ${done ? active : ''}`}>
+      <div className={`${checkCircle} ${done ? active : ''}`} onClick={e => onCheck(id)}>
         {done && <MdDone />}
       </div>
       <span className={`${text} ${done ? finish : ''}`}>{title}</span>
