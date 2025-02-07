@@ -58,9 +58,14 @@ const AddUsers = ({ onAddUser }) => {
     });
   };
 
+  // 에러모달을 닫아주는 함수
+  const closeModal = () => {
+    setError(null);
+  }
+
   return (
     <>
-      {error && <ErrorModal title={error.title} message={error.message} />}
+      {error && <ErrorModal title={error.title} message={error.message} onClose={closeModal} />}
       <Card className={styles.input}>
         <form onSubmit={handleSubmit}>
           <label htmlFor='username'>이름</label>
