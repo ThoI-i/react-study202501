@@ -8,6 +8,7 @@ const TodoInput = () => {
     'form-wrapper': wrapper,
     'insert-form': insertForm,
     'insert-btn': insertBtn,
+    open: openStyle
   } = styles;
 
   // 입력창을 열어줄지 여부를 관리
@@ -26,7 +27,7 @@ const TodoInput = () => {
           </form>
         </div>
       }
-      <button className={insertBtn} onClick={() => setOpen(!open)}>
+      <button className={`${insertBtn} ${open ? openStyle : ''}`} onClick={() => setOpen(!open)}>
         <MdAdd />
       </button>
     </>
