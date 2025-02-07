@@ -5,12 +5,12 @@ import TodoItem from './TodoItem';
 
 
 // 컴포넌트
-const TodoMain = ({items}) => {
+const TodoMain = ({items, onRemove}) => {
   
   return (
     <ul className={styles['todo-list']}>
       {items.map((todo) => (
-        <TodoItem key={todo.id} item={todo} />
+        <TodoItem key={todo.id} item={todo} onDelete={onRemove} />
       ))}
     </ul>
   );

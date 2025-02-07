@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import TodoHeader from './TodoHeader';
 import styles from './scss/TodoTemplate.module.scss';
@@ -27,10 +28,15 @@ const TodoTemplate = () => {
     setTodoList([...todoList, newTodo]);
   };
 
+  // 할 일 삭제 함수
+  const removeTodo = (id) => { 
+    setTodoList(todoList.filter(todo => todo.id !== id));
+  };
+
   return (
     <div className={styles.TodoTemplate}>
       <TodoHeader />
-      <TodoMain items={todoList} />
+      <TodoMain items={todoList} onRemove={removeTodo} />
       <TodoInput onAdd={addTodo} />
     </div>
   );
