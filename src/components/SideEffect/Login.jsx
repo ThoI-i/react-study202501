@@ -17,16 +17,25 @@ const Login = () => {
   // 패스워드를 잘 썻는지 여부
   const [passwordIsValid, setPasswordIsValid] = useState(null);
 
-  // 패스워드를 잘 썻는지 여부
+  // 로그인 버튼을 열어줄지에 대한 여부
+  const [formIsValid, setFormIsVaild] = useState(false);
 
   // 이메일 값 저장 및 검증
   const handleEmail = (e) => {
     setEnteredEmail(e.target.value);
+
+    setFormIsVaild(
+      e.target.value.includes('@') && enteredPassword.trim().length > 6
+    );
   };
 
   // 패스워드 값 저장 및 검증
   const handlePassword = (e) => {
     setEnteredPassword(e.target.value);
+
+    setFormIsVaild(
+      enteredEmail.includes('@') && e.target.value.trim().length > 6
+    );
   };
 
   // 이메일 검증
@@ -67,7 +76,9 @@ const Login = () => {
         <div className={styles.actions}>
           <Button
             type='submit'
-            className={styles.btn}>
+            className={styles.btn}
+            disabled={!formIsValid}
+          >
             Login
           </Button>
         </div>
